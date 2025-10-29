@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monitoramento</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            background: #667eea;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <h1>📍 Sistema de Monitoramento</h1>
+    <div class="container">
+        <h2>Dispositivo: <span id="deviceId">Carregando...</span></h2>
+        <p>✅ Página funcionando!</p>
+        <p>🚀 Em breve: mapa em tempo real</p>
+    </div>
+
+    <script>
+        // Pegar ID da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const deviceId = urlParams.get('device');
+        
+        // Mostrar na tela
+        if (deviceId) {
+            document.getElementById('deviceId').textContent = deviceId;
+        } else {
+            document.getElementById('deviceId').textContent = 'ID não encontrado na URL';
+        }
+    </script>
+</body>
+</html>
