@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monitoramento em Tempo Real</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .device-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .device-id {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 20px;
+        }
+        .map-placeholder {
+            height: 400px;
+            background: #e9ecef;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .status {
+            text-align: center;
+            padding: 15px;
+            background: #fff3cd;
+            border-radius: 10px;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📍 Monitoramento em Tempo Real</h1>
+        
+        <div class="device-info">
+            <p>Dispositivo monitorado: 
+               <span class="device-id" id="deviceId">Carregando...</span>
+            </p>
+        </div>
+        
+        <div class="map-placeholder">
+            🗺️ Mapa - Em breve integração com Google Maps
+        </div>
+        
+        <div class="status">
+            <p>⏳ Aguardando dados de localização...</p>
+            <p>🔧 Sistema sendo configurado</p>
+        </div>
+    </div>
+
+    <script>
+        // Pegar ID do dispositivo da URL
+        function getDeviceId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('device');
+        }
+        
+        // Mostrar informações na página
+        function setupPage() {
+            const deviceId = getDeviceId();
+            const deviceElement = document.getElementById('deviceId');
+            
+            if (deviceId) {
+                deviceElement.textContent = deviceId;
+                document.title = "Monitorando: " + deviceId;
+            } else {
+                deviceElement.textContent = "ID não encontrado na URL";
+                deviceElement.style.color = "red";
+            }
+        }
+        
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', setupPage);
+    </script>
+</body>
+</html>
